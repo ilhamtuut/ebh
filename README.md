@@ -1,23 +1,13 @@
-# metronic-vue
+# Ebh
 
 ## Project setup
 ```
-yarn install
+npm install
 ```
 
 ### Compiles and hot-reloads for development
 ```
-yarn serve
-```
-
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
+npm serve
 ```
 
 ### Customize configuration
