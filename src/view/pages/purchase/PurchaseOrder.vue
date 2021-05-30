@@ -3,7 +3,7 @@
         <div class="card card-custom gutter-b">
             <div class="card-header flex-wrap">
                 <div class="card-title">
-                    <h3 class="card-label">Order Pembelian</h3>
+                    <h3 class="card-label">Transaksi Order Pembelian</h3>
                 </div>
                 <div class="card-toolbar">
                     <b-dropdown
@@ -56,56 +56,78 @@
                             <div class="card-body p-0">
                                 <div class="form-group row mb-1">
                                     <div class="col-lg-4">
-                                        <label>Kode Gudang:</label>
-                                        <input type="text" class="form-control" placeholder="Kode Gudang"/>
+                                        <label>Kode Cabang:</label>
+                                        <input type="text" class="form-control form-control-sm" placeholder="Kode Cabang"/>
                                         <!-- <span class="form-text text-danger">Please enter your full name</span> -->
                                     </div>
                                     <div class="col-lg-4">
-                                        <label>Nama Gudang:</label>
-                                        <input type="text" class="form-control" placeholder="Nama Gudang"/>
+                                        <label>Nama Cabang:</label>
+                                        <input type="text" class="form-control form-control-sm" placeholder="Nama Cabang"/>
                                     </div>
                                     <div class="col-lg-4">
                                         <label>Jenis Transaksi:</label>
-                                        <input type="text" class="form-control" placeholder="Jenis Transaksi"/>
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <select class="form-control form-control-sm">
+                                                    <option value="">Pilih Jenis Transaksi</option>
+                                                    <option value="Insidentil">Insidentil</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <input type="text" class="form-control form-control-sm" placeholder="Jenis Transaksi"/>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group row mb-1">
-                                    <div class="col-lg-4">
-                                        <label>Tgl PP:</label>
-                                        <input type="date" class="form-control" placeholder="Tgl PP"/>
+                                    <div class="col-lg-3">
+                                        <label>Tgl OP:</label>
+                                        <input type="date" class="form-control form-control-sm" placeholder="Tgl OP"/>
                                     </div>
-                                    <div class="col-lg-4">
-                                        <label>No PP:</label>
-                                        <input type="text" class="form-control" placeholder="No PP"/>
+                                    <div class="col-lg-3">
+                                        <label>No OP:</label>
+                                        <input type="text" class="form-control form-control-sm" placeholder="No OP"/>
                                     </div>
-                                    <div class="col-lg-4">
-                                        <label>Kategori Permintaan:</label>
-                                        <select class="form-control">
-                                            <option value="">Pilih Kategori Permintaan</option>
-                                            <option value="Insidentil">Insidentil</option>
+                                    <div class="col-lg-3">
+                                        <label>Tgl Est Serah:</label>
+                                        <input type="date" class="form-control form-control-sm" placeholder="Tgl Est Serah"/>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <label>Mata Uang:</label>
+                                        <select class="form-control form-control-sm">
+                                            <option value="">Pilih Mata Uang</option>
+                                            <option value="Rp">Rp</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group row mb-1">
-                                    <div class="col-lg-4">
-                                        <label>Kode Keperluan:</label>
-                                        <input type="text" class="form-control" placeholder="Kode Keperluan"/>
+                                    <div class="col-lg-6">
+                                        <label>Kode Supplier:</label>
+                                        <input type="text" class="form-control form-control-sm" placeholder="Kode Supplier"/>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <label>Nama Supplier:</label>
+                                        <input type="text" class="form-control form-control-sm" placeholder="Nama Supplier"/>
+                                    </div>
+                                </div>
+                                <div class="form-group row mb-1">
+                                    <div class="col-lg-8">
+                                        <label>Nomor Persetujuan PP:</label>
+                                        <input type="text" class="form-control form-control-sm" placeholder="Nomor Persetujuan PP"/>
                                     </div>
                                     <div class="col-lg-4">
-                                        <label>Nama Keperluan:</label>
-                                        <input type="text" class="form-control" placeholder="Nama Keperluan"/>
-                                    </div>
-                                    <div class="col-lg-4">
-                                        <label>Sifat Permintaan:</label>
-                                        <select class="form-control">
-                                            <option value="">Pilih Sifat Permintaan</option>
-                                            <option value="Normal">Normal</option>
-                                        </select>
+                                        <label>TOP:</label>
+                                        <div class="input-group input-group-sm">
+                                            <input type="text" class="form-control form-control-sm" placeholder="TOP">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text">Hari</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleTextarea">Catatan</label>
-                                    <textarea class="form-control" rows="3" placeholder="Catatan"></textarea>
+                                    <textarea class="form-control form-control-sm" rows="3" placeholder="Catatan"></textarea>
                                 </div>
                             </div>
                             <div class="card-footer text-center p-2">
@@ -119,14 +141,8 @@
                         </form>
 
                         <div>
-                            <b-table striped hover bordered small
-                                :fields="barangfields"
-                                :items="barangs"></b-table>
-                        </div>
-
-                        <div>
                             <fieldset>
-                                <legend>Daftar Permintaan Pembelian</legend>
+                                <legend>Daftar Order Pembelian</legend>
                                 <b-table striped hover bordered small
                                     :fields="barangfields"
                                     :items="barangs"></b-table>
@@ -136,8 +152,104 @@
                 </div>
             </div>
             <div class="card-body">
-                <!-- User Interface controls -->
-                <b-row> 
+                <form class="form">
+                    <div class="card-body p-0">
+                        <div class="form-group row mb-1">
+                            <div class="col-lg-4">
+                                <label>Kode Cabang:</label>
+                                <input type="text" class="form-control form-control-sm" placeholder="Kode Cabang"/>
+                                <!-- <span class="form-text text-danger">Please enter your full name</span> -->
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Nama Cabang:</label>
+                                <input type="text" class="form-control form-control-sm" placeholder="Nama Cabang"/>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>Jenis Transaksi:</label>
+                                <div class="row">
+                                    <div class="col-sm-4">
+                                        <select class="form-control form-control-sm">
+                                            <option value="">Pilih Jenis Transaksi</option>
+                                            <option value="Insidentil">Insidentil</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-8">
+                                        <input type="text" class="form-control form-control-sm" placeholder="Jenis Transaksi"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-1">
+                            <div class="col-lg-3">
+                                <label>Tgl OP:</label>
+                                <input type="date" class="form-control form-control-sm" placeholder="Tgl OP"/>
+                            </div>
+                            <div class="col-lg-3">
+                                <label>No OP:</label>
+                                <input type="text" class="form-control form-control-sm" placeholder="No OP"/>
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Tgl Est Serah:</label>
+                                <input type="date" class="form-control form-control-sm" placeholder="Tgl Est Serah"/>
+                            </div>
+                            <div class="col-lg-3">
+                                <label>Mata Uang:</label>
+                                <select class="form-control form-control-sm">
+                                    <option value="">Pilih Mata Uang</option>
+                                    <option value="Rp">Rp</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-1">
+                            <div class="col-lg-6">
+                                <label>Kode Supplier:</label>
+                                <input type="text" class="form-control form-control-sm" placeholder="Kode Supplier"/>
+                            </div>
+                            <div class="col-lg-6">
+                                <label>Nama Supplier:</label>
+                                <input type="text" class="form-control form-control-sm" placeholder="Nama Supplier"/>
+                            </div>
+                        </div>
+                        <div class="form-group row mb-1">
+                            <div class="col-lg-8">
+                                <label>Nomor Persetujuan PP:</label>
+                                <input type="text" class="form-control form-control-sm" placeholder="Nomor Persetujuan PP"/>
+                            </div>
+                            <div class="col-lg-4">
+                                <label>TOP:</label>
+                                <div class="input-group input-group-sm">
+                                    <input type="text" class="form-control form-control-sm" placeholder="TOP">
+                                    <div class="input-group-append">
+                                        <span class="input-group-text">Hari</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleTextarea">Catatan</label>
+                            <textarea class="form-control form-control-sm" rows="3" placeholder="Catatan"></textarea>
+                        </div>
+                    </div>
+                    <div class="card-footer text-center p-2">
+                        <button type="button" class="btn btn-sm btn-primary mr-2">Tambah</button>
+                        <button type="button" class="btn btn-sm btn-info mr-2">Ubah</button>
+                        <button type="button" class="btn btn-sm btn-danger mr-2">Hapus</button>
+                        <button type="button" class="btn btn-sm btn-success mr-2">Cari</button>
+                        <button type="button" class="btn btn-sm btn-warning mr-2">Print</button>
+                        <button type="button" class="btn btn-sm btn-secondary" @click="$bvModal.hide('add-modal')">Keluar</button>
+                    </div>
+                </form>
+
+                <div>
+                    <fieldset>
+                        <legend>Daftar Order Pembelian</legend>
+                        <b-table striped hover bordered small
+                            :fields="barangfields"
+                            :items="barangs"></b-table>
+                    </fieldset>
+                </div>
+
+                <!-- <b-row> 
                     <b-col lg="6" md="6" sm="12" class="my-1"></b-col>
                     <b-col lg="6" md="6" sm="12" class="my-1">
                         <b-form-group
@@ -164,7 +276,6 @@
                     </b-col>
                 </b-row>
 
-                <!-- Main table element -->
                 <b-table
                     :items="items"
                     :fields="fields"
@@ -247,7 +358,7 @@
                             class="my-0"
                             ></b-pagination>
                     </b-col>
-                </b-row>
+                </b-row> -->
 
                 <!-- Info modal -->
                 <b-modal centered scrollable size="xl" :id="infoModal.id" :title="infoModal.title" ok-only @hide="resetInfoModal">
@@ -303,9 +414,11 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="exampleTextarea">Catatan</label>
-                                <textarea class="form-control" rows="3" placeholder="Catatan"></textarea>
+                            <div class="form-group row">
+                                <div class="col-lg-12">
+                                    <label for="exampleTextarea">Catatan</label>
+                                    <textarea class="form-control" rows="3" placeholder="Catatan"></textarea>
+                                </div>
                             </div>
                         </div>
                         <div class="card-footer text-center p-2">
@@ -437,14 +550,17 @@ export default {
                 { key: 'actions', label: 'Actions', class: 'text-center' }
             ],
             barangs: [
-                { no: 1, kode_barang: '11223438-9', nama_barang: 'Jasa Pebaikan Kendaraan', jumlah : 10, kode_satuan: 'Pcs'},
+                { kode_barang: '11223438-9', nama_barang: 'Jasa Pebaikan Kendaraan', jumlah : 10, jumlah_nop : 0, jumlah_op : 10, kode_satuan: 'Pcs', price:1000000, value:1000000},
             ],
             barangfields: [
-                { key: 'no', label: 'No', class: 'text-center' },
                 { key: 'kode_barang', label: 'Kode Barang' },
                 { key: 'nama_barang', label: 'Nama Barang' },
-                { key: 'jumlah', label: 'Jumlah', class: 'text-right' },
-                { key: 'kode_satuan', label: 'Kode Satuan', class: 'text-center' }
+                { key: 'jumlah', label: 'Jumlah (Setuju)', class: 'text-right' },
+                { key: 'jumlah_nop', label: 'Jumlah (Belum OP)', class: 'text-right' },
+                { key: 'kode_satuan', label: 'Satuan', class: 'text-center' },
+                { key: 'jumlah_op', label: 'Jumlah (OP)', class: 'text-right' },
+                { key: 'price', label: 'Harga Satuan', class: 'text-right' },
+                { key: 'value', label: 'Nilai', class: 'text-right' },
             ],
             stickyHeader : true,
             isBusy: false,
