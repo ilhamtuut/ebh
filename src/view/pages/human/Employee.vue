@@ -47,7 +47,7 @@
                             </b-dropdown-text>
                         </div>
                     </b-dropdown>
-                    <a href="#" class="btn btn-primary font-weight-bolder">
+                    <a href="javascript:;" class="btn btn-primary font-weight-bolder">
                     <span class="svg-icon svg-icon-md">
                         <i class="menu-icon flaticon-add-circular-button"></i>
                     </span>Tambah</a>
@@ -159,8 +159,9 @@ export default {
             var this_ = this
             this_.loading = true;
             this_.companies = []
-            this_.companiesData = []
-            ApiService.get(this_.url + '?page=' + page)
+            this_.companiesData = {}
+            // ApiService.get(this_.url + '?page=' + page)
+            ApiService.query("employees?page=" + page)
                 .then(function (resp) {
                     console.log(resp.data, this_.url + '?page=' + page)
                     this_.companies = resp.data.data;
@@ -184,7 +185,7 @@ export default {
             ApiService.query(this_.url+'?q='+this_.search+'&page='+page)
             .then(function (resp) {
                 this_.companies = resp.data.data;
-                this_.companiesData = [];
+                this_.companiesData = {};
                 this_.loading = false;
                 // this_.$forceUpdate();
             })

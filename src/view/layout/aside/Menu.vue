@@ -367,7 +367,7 @@
           </router-link>
 
           <router-link
-            to="/purchase/request/order"
+            to="/purchase/close/request"
             v-slot="{ href, navigate, isActive, isExactActive }"
           >
             <li

@@ -285,8 +285,8 @@ export default {
       state: "signin",
       // Remove this dummy login info
       form: {
-        email: "admin@demo.com",
-        password: "demo"
+        email: "aljawad.jpr@gmail.com",
+        password: "buruh123"
       }
     };
   },
@@ -422,7 +422,18 @@ export default {
         this.$store
           .dispatch(LOGIN, { email, password })
           // go to which page after successfully login
-          .then(() => this.$router.push({ name: "dashboard" }))
+          .then((result) => {
+            if(result.type == 'success'){
+              this.$router.push({ name: "dashboard" })
+            }else{
+              Swal.fire({
+                title: "",
+                text: "Incorrect email or password.",
+                icon: "error",
+                heightAuto: false
+              });
+            }
+          })
           .catch(() => {});
 
         submitButton.classList.remove(

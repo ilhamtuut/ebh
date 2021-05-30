@@ -34,12 +34,16 @@ const actions = {
     return new Promise(resolve => {
       ApiService.post("login", credentials)
         .then(({ data }) => {
-          context.commit(SET_AUTH, data);
+          if(data.type == 'success'){
+            context.commit(SET_AUTH, data);
+          }else{
+            context.commit(SET_ERROR, data.errors);
+          }
           resolve(data);
-        })
-        .catch(({ response }) => {
-          context.commit(SET_ERROR, response.data.errors);
         });
+        // .catch(({ response }) => {
+          // context.commit(SET_ERROR, response.data.errors);
+        // });
     });
   },
   [LOGOUT](context) {
@@ -60,13 +64,13 @@ const actions = {
   [VERIFY_AUTH](context) {
     if (JwtService.getToken()) {
       ApiService.setHeader();
-      ApiService.get("verify")
-        .then(({ data }) => {
-          context.commit(SET_AUTH, data);
-        })
-        .catch(({ response }) => {
-          context.commit(SET_ERROR, response.data.errors);
-        });
+      // ApiService.get("verify")
+      //   .then(({ data }) => {
+      //     context.commit(SET_AUTH, data);
+      //   })
+      //   .catch(({ response }) => {
+      //     context.commit(SET_ERROR, response.data.errors);
+      //   });
     } else {
       context.commit(PURGE_AUTH);
     }
@@ -89,7 +93,7 @@ const mutations = {
     state.isAuthenticated = true;
     state.user = user;
     state.errors = {};
-    JwtService.saveToken(state.user.token);
+    JwtService.saveToken(user.token);
   },
   [SET_PASSWORD](state, password) {
     state.user.password = password;

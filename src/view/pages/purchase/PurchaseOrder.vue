@@ -47,10 +47,92 @@
                             </b-dropdown-text>
                         </div>
                     </b-dropdown>
-                    <a href="#" class="btn btn-primary font-weight-bolder">
+                    <a href="#" class="btn btn-primary font-weight-bolder" @click="showModalAdd($event.target)">
                     <span class="svg-icon svg-icon-md">
                         <i class="menu-icon flaticon-add-circular-button"></i>
                     </span>Tambah</a>
+                    <b-modal centered scrollable size="xl" hide-footer :id="addModal.id" :title="addModal.title" @hide="resetAddModal">
+                        <form class="form">
+                            <div class="card-body p-0">
+                                <div class="form-group row mb-1">
+                                    <div class="col-lg-4">
+                                        <label>Kode Gudang:</label>
+                                        <input type="text" class="form-control" placeholder="Kode Gudang"/>
+                                        <!-- <span class="form-text text-danger">Please enter your full name</span> -->
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label>Nama Gudang:</label>
+                                        <input type="text" class="form-control" placeholder="Nama Gudang"/>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label>Jenis Transaksi:</label>
+                                        <input type="text" class="form-control" placeholder="Jenis Transaksi"/>
+                                    </div>
+                                </div>
+                                <div class="form-group row mb-1">
+                                    <div class="col-lg-4">
+                                        <label>Tgl PP:</label>
+                                        <input type="date" class="form-control" placeholder="Tgl PP"/>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label>No PP:</label>
+                                        <input type="text" class="form-control" placeholder="No PP"/>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label>Kategori Permintaan:</label>
+                                        <select class="form-control">
+                                            <option value="">Pilih Kategori Permintaan</option>
+                                            <option value="Insidentil">Insidentil</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row mb-1">
+                                    <div class="col-lg-4">
+                                        <label>Kode Keperluan:</label>
+                                        <input type="text" class="form-control" placeholder="Kode Keperluan"/>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label>Nama Keperluan:</label>
+                                        <input type="text" class="form-control" placeholder="Nama Keperluan"/>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <label>Sifat Permintaan:</label>
+                                        <select class="form-control">
+                                            <option value="">Pilih Sifat Permintaan</option>
+                                            <option value="Normal">Normal</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleTextarea">Catatan</label>
+                                    <textarea class="form-control" rows="3" placeholder="Catatan"></textarea>
+                                </div>
+                            </div>
+                            <div class="card-footer text-center p-2">
+                                <button type="button" class="btn btn-sm btn-primary mr-2">Tambah</button>
+                                <button type="button" class="btn btn-sm btn-info mr-2">Ubah</button>
+                                <button type="button" class="btn btn-sm btn-danger mr-2">Hapus</button>
+                                <button type="button" class="btn btn-sm btn-success mr-2">Cari</button>
+                                <button type="button" class="btn btn-sm btn-warning mr-2">Print</button>
+                                <button type="button" class="btn btn-sm btn-secondary" @click="$bvModal.hide('add-modal')">Keluar</button>
+                            </div>
+                        </form>
+
+                        <div>
+                            <b-table striped hover bordered small
+                                :fields="barangfields"
+                                :items="barangs"></b-table>
+                        </div>
+
+                        <div>
+                            <fieldset>
+                                <legend>Daftar Permintaan Pembelian</legend>
+                                <b-table striped hover bordered small
+                                    :fields="barangfields"
+                                    :items="barangs"></b-table>
+                            </fieldset>
+                        </div>
+                    </b-modal>
                 </div>
             </div>
             <div class="card-body">
@@ -169,7 +251,87 @@
 
                 <!-- Info modal -->
                 <b-modal centered scrollable size="xl" :id="infoModal.id" :title="infoModal.title" ok-only @hide="resetInfoModal">
-                    <pre>{{ infoModal.content }}</pre>
+                    <!-- <pre>{{ infoModal.content }}</pre> -->
+                    <form class="form">
+                        <div class="card-body p-0">
+                            <div class="form-group row mb-1">
+                                <div class="col-lg-4">
+                                    <label>Kode Gudang:</label>
+                                    <input type="text" class="form-control" placeholder="Kode Gudang"/>
+                                    <!-- <span class="form-text text-danger">Please enter your full name</span> -->
+                                </div>
+                                <div class="col-lg-4">
+                                    <label>Nama Gudang:</label>
+                                    <input type="text" class="form-control" placeholder="Nama Gudang"/>
+                                </div>
+                                <div class="col-lg-4">
+                                    <label>Jenis Transaksi:</label>
+                                    <input type="text" class="form-control" placeholder="Jenis Transaksi"/>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-1">
+                                <div class="col-lg-4">
+                                    <label>Tgl PP:</label>
+                                    <input type="date" class="form-control" placeholder="Tgl PP"/>
+                                </div>
+                                <div class="col-lg-4">
+                                    <label>No PP:</label>
+                                    <input type="text" class="form-control" placeholder="No PP"/>
+                                </div>
+                                <div class="col-lg-4">
+                                    <label>Kategori Permintaan:</label>
+                                    <select class="form-control">
+                                        <option value="">Pilih Kategori Permintaan</option>
+                                        <option value="Insidentil">Insidentil</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group row mb-1">
+                                <div class="col-lg-4">
+                                    <label>Kode Keperluan:</label>
+                                    <input type="text" class="form-control" placeholder="Kode Keperluan"/>
+                                </div>
+                                <div class="col-lg-4">
+                                    <label>Nama Keperluan:</label>
+                                    <input type="text" class="form-control" placeholder="Nama Keperluan"/>
+                                </div>
+                                <div class="col-lg-4">
+                                    <label>Sifat Permintaan:</label>
+                                    <select class="form-control">
+                                        <option value="">Pilih Sifat Permintaan</option>
+                                        <option value="Normal">Normal</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleTextarea">Catatan</label>
+                                <textarea class="form-control" rows="3" placeholder="Catatan"></textarea>
+                            </div>
+                        </div>
+                        <div class="card-footer text-center p-2">
+                            <button type="button" class="btn btn-sm btn-primary mr-2">Tambah</button>
+                            <button type="button" class="btn btn-sm btn-info mr-2">Ubah</button>
+                            <button type="button" class="btn btn-sm btn-danger mr-2">Hapus</button>
+                            <button type="button" class="btn btn-sm btn-success mr-2">Cari</button>
+                            <button type="button" class="btn btn-sm btn-warning mr-2">Print</button>
+                            <button type="button" class="btn btn-sm btn-secondary" @click="$bvModal.hide('add-modal')">Keluar</button>
+                        </div>
+                    </form>
+
+                    <div>
+                        <b-table striped hover bordered small
+                            :fields="barangfields"
+                            :items="barangs"></b-table>
+                    </div>
+
+                    <div>
+                        <fieldset>
+                            <legend>Daftar Permintaan Pembelian</legend>
+                            <b-table striped hover bordered small
+                                :fields="barangfields"
+                                :items="barangs"></b-table>
+                        </fieldset>
+                    </div>
                 </b-modal>
             </div>
         </div>
@@ -188,6 +350,24 @@
     .table.b-table > tbody > .table-active, .table.b-table > tbody > .table-active > th, .table.b-table > tbody > .table-active > td{
         background-color: #F3F6F9;
     }
+
+    fieldset{
+        min-width: 0;
+        padding: 0px 5px;
+        margin-bottom: 10px;
+        border: 1px solid #ebedf3;
+    }
+
+    legend{
+        display: block;
+        width: auto;
+        max-width: 100%;
+        margin-bottom: 0px;
+        padding: 5px;
+        font-size: 14px;
+        line-height: inherit;
+        white-space: normal;
+    }
 </style>
 
 <script>
@@ -197,6 +377,19 @@ import { SET_BREADCRUMB } from "@/core/services/store/breadcrumbs.module";
 export default {
     data() {
         return {
+            form: {
+                email: "",
+                name: "",
+                food: null,
+                checked: []
+            },
+            foods: [
+                { text: "Select One", value: null },
+                "Carrots",
+                "Beans",
+                "Tomatoes",
+                "Corn"
+            ],
             items: [
                 { isActive: true, age: 40, name: { first: 'Dickerson', last: 'Macdonald' } },
                 { isActive: false, age: 21, name: { first: 'Larsen', last: 'Shaw' } },
@@ -243,6 +436,16 @@ export default {
                 },
                 { key: 'actions', label: 'Actions', class: 'text-center' }
             ],
+            barangs: [
+                { no: 1, kode_barang: '11223438-9', nama_barang: 'Jasa Pebaikan Kendaraan', jumlah : 10, kode_satuan: 'Pcs'},
+            ],
+            barangfields: [
+                { key: 'no', label: 'No', class: 'text-center' },
+                { key: 'kode_barang', label: 'Kode Barang' },
+                { key: 'nama_barang', label: 'Nama Barang' },
+                { key: 'jumlah', label: 'Jumlah', class: 'text-right' },
+                { key: 'kode_satuan', label: 'Kode Satuan', class: 'text-center' }
+            ],
             stickyHeader : true,
             isBusy: false,
             totalRows: 1,
@@ -256,6 +459,11 @@ export default {
             filterOn: [],
             infoModal: {
                 id: 'info-modal',
+                title: '',
+                content: ''
+            },
+            addModal: {
+                id: 'add-modal',
                 title: '',
                 content: ''
             },
@@ -281,7 +489,7 @@ export default {
     mounted() {
         // KTDefaultDatatable.init("kt_datatable");
         this.$store.dispatch(SET_BREADCRUMB, [
-            { title: "Purchase", route: "employee" },
+            { title: "Purchase" },
             { title: "Order Pembelian" }
         ]);
 
@@ -292,6 +500,14 @@ export default {
         document.title = 'EBS | Order Pembelian';
     },
     methods:{
+        showModalAdd(button) {
+            this.addModal.title = 'Tambah Order Pembelian'
+            this.addModal.content = ''
+            this.$root.$emit('bv::show::modal', this.addModal.id, button)
+        },
+        resetAddModal(){
+            
+        },
         info(item, index, button) {
             this.infoModal.title = `Row index: ${index}`
             this.infoModal.content = JSON.stringify(item, null, 2)

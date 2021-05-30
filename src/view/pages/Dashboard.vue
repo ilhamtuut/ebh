@@ -56,6 +56,6 @@ export default {
   },
   created () {
       document.title = 'EBS | Dashboard';
-  },
+  }
 };
 </script>
