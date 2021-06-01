@@ -163,14 +163,14 @@ export default {
             // ApiService.get(this_.url + '?page=' + page)
             ApiService.query("employees?page=" + page)
                 .then(function (resp) {
-                    console.log(resp.data, this_.url + '?page=' + page)
+                    // console.log(resp.data, this_.url + '?page=' + page)
                     this_.companies = resp.data.data;
                     this_.companiesData = resp.data;
                     this_.loading = false;
                     // this_.$forceUpdate();
                 })
                 .catch(function (resp) {
-                    console.log(resp);
+                    // console.log(resp);
                     this_.loading = false;
                     this_.makeToastVariant('danger','error','Could not load data')
                 });
@@ -190,7 +190,7 @@ export default {
                 // this_.$forceUpdate();
             })
             .catch(function (resp) {
-                console.log(resp);
+                // console.log(resp);
                 this_.loading = false;
                 this_.makeToastVariant('danger','error','Could not load data')
             });
