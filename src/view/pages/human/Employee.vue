@@ -169,8 +169,7 @@ export default {
                     this_.loading = false;
                     // this_.$forceUpdate();
                 })
-                .catch(function (resp) {
-                    // console.log(resp);
+                .catch(function () {
                     this_.loading = false;
                     this_.makeToastVariant('danger','error','Could not load data')
                 });
@@ -189,8 +188,7 @@ export default {
                 this_.loading = false;
                 // this_.$forceUpdate();
             })
-            .catch(function (resp) {
-                // console.log(resp);
+            .catch(function () {
                 this_.loading = false;
                 this_.makeToastVariant('danger','error','Could not load data')
             });
